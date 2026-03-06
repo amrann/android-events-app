@@ -7,11 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
+import com.compose.eventapps.data.response.ListEventsItem
 import com.compose.eventapps.databinding.FragmentFinishedBinding
 
 class FinishedFragment : Fragment() {
 
   private var _binding: FragmentFinishedBinding? = null
+
+  private lateinit var rvFinishedEvent: RecyclerView
+
+  private val list = ArrayList<ListEventsItem>()
 
   // This property is only valid between onCreateView and
   // onDestroyView.
@@ -28,9 +34,12 @@ class FinishedFragment : Fragment() {
     _binding = FragmentFinishedBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textNotifications
+    rvFinishedEvent = _binding?.rvFinishedEvent!!
+    rvFinishedEvent.setHasFixedSize(true)
+
+//    val textView: TextView = binding.textNotifications
     finishedViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+//      textView.text = it
     }
     return root
   }
