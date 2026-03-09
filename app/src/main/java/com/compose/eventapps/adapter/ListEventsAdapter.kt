@@ -11,6 +11,12 @@ import com.compose.eventapps.databinding.ItemRowEventBinding
 
 class ListEventsAdapter (private val listEvent: ArrayList<ListEventsItem>) : RecyclerView.Adapter<ListEventsAdapter.ListViewHolder>() {
 
+  private lateinit var onItemClickCallback: OnItemClickCallback
+
+  fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+    this.onItemClickCallback = onItemClickCallback
+  }
+
   override fun onCreateViewHolder(
     parent: ViewGroup,
     viewType: Int
@@ -28,11 +34,18 @@ class ListEventsAdapter (private val listEvent: ArrayList<ListEventsItem>) : Rec
       .load(mediaCover)
       .into(holder.img)
     holder.tvTitle.text = name
+    holder.itemView.setOnClickListener {
+      onItemClickCallback.onItemClicked(listEvent[holder.adapterPosition])
+    }
   }
 
   class ListViewHolder(binding: ItemRowEventBinding) : RecyclerView.ViewHolder(binding.root) {
     val img: ImageView = binding.imgBanner
     val tvTitle: TextView = binding.tvTitle
+  }
+
+  interface OnItemClickCallback {
+    fun onItemClicked(data: ListEventsItem)
   }
 
 }

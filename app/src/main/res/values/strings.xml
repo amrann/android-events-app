@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Event Apps</string>
-    <string name="title_home">Home</string>
     <string name="title_upcoming">Upcoming</string>
     <string name="title_finished">Finished</string>
-    <string name="home_fragment">Home Fragment</string>
     <string name="banner">banner</string>
+    <string name="sisa_kuota">Sisa Kuota:</string>
+    <string name="register">Register</string>
+    <string name="cover_detail_event">cover detail event</string>
+    <string name="by">By</string>
 </resources>
